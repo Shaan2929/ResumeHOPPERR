@@ -11,27 +11,35 @@ export default async function handler(req, res) {
     'Content-Type': 'application/json',
     'apikey': SUPABASE_KEY,
     'Authorization': 'Bearer ' + SUPABASE_KEY,
-    'Prefer': 'return=minimal'
+    'Prefer': 'return=representation'
   };
 
   if(action === 'create'){
-    const r = await fetch(SUPABASE_URL + '/rest/v1/payments', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ payment_id: payment_id, status: 'pending' })
-    });
-    const text = await r.text();
-    console.log('Supabase insert status:', r.status, text);
-    return res.status(200).json({ ok: true, status: r.status });
+    try {
+      const r = await fetch(SUPABASE_URL + '/rest/v1/payments', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ payment_id: payment_id, status: 'pending' })
+      });
+      const text = await r.text();
+      console.log('INSERT status:', r.status, 'body:', text);
+      return res.status(200).json({ ok: true, supabase_status: r.status, supabase_body: text });
+    } catch(e) {
+      return res.status(500).json({ error: e.message });
+    }
   }
 
   if(action === 'check'){
-    const r = await fetch(SUPABASE_URL + '/rest/v1/payments?payment_id=eq.' + payment_id + '&select=status', { headers });
-    const data = await r.json();
-    if(data && data.length > 0 && data[0].status === 'verified'){
-      return res.status(200).json({ verified: true });
+    try {
+      const r = await fetch(SUPABASE_URL + '/rest/v1/payments?payment_id=eq.' + payment_id + '&select=status', { headers });
+      const data = await r.json();
+      if(data && data.length > 0 && data[0].status === 'verified'){
+        return res.status(200).json({ verified: true });
+      }
+      return res.status(200).json({ verified: false });
+    } catch(e) {
+      return res.status(500).json({ error: e.message });
     }
-    return res.status(200).json({ verified: false });
   }
 
   return res.status(400).json({ error: 'Invalid action' });
