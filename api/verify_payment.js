@@ -10,16 +10,19 @@ export default async function handler(req, res) {
   const headers = {
     'Content-Type': 'application/json',
     'apikey': SUPABASE_KEY,
-    'Authorization': 'Bearer ' + SUPABASE_KEY
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Prefer': 'return=minimal'
   };
 
   if(action === 'create'){
-    await fetch(SUPABASE_URL + '/rest/v1/payments', {
+    const r = await fetch(SUPABASE_URL + '/rest/v1/payments', {
       method: 'POST',
       headers,
-      body: JSON.stringify({ payment_id, status: 'pending' })
+      body: JSON.stringify({ payment_id: payment_id, status: 'pending' })
     });
-    return res.status(200).json({ ok: true });
+    const text = await r.text();
+    console.log('Supabase insert status:', r.status, text);
+    return res.status(200).json({ ok: true, status: r.status });
   }
 
   if(action === 'check'){
