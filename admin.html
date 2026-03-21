@@ -56,7 +56,21 @@ function loadPayments(){
       return;
     }
     var html='';
-    d.payments.forEach(function(p){
+    function loadPayments(){
+  fetch('/api/admin_verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'list',password:adminPass})})
+  .then(function(r){return r.json();}).then(function(d){
+    var payments = Array.isArray(d) ? d : (d.payments || []);
+    if(!payments.length){
+      document.getElementById('paymentsList').innerHTML='<p style="text-align:center;color:#888;padding:2rem;">No payments yet.</p>';
+      return;
+    }
+    var html='';
+    payments.forEach(function(p){
+      html+='<div class="payment-row"><span class="pid">'+p.payment_id+'</span><span class="status-'+(p.status==='verified'?'verified':'pending')+'">'+p.status+'</span>'+(p.status!=='verified'?'<button class="verify-btn" onclick="approvePayment(\''+p.payment_id+'\')">✅ Verify</button>':'<span style="color:#276749;font-size:13px;">✓ Done</span>')+'</div>';
+    });
+    document.getElementById('paymentsList').innerHTML=html;
+  });
+}
       html+='<div class="payment-row"><span class="pid">'+p.payment_id+'</span><span class="status-'+(p.status==='verified'?'verified':'pending')+'">'+p.status+'</span>'+(p.status!=='verified'?'<button class="verify-btn" onclick="approvePayment(\'' + p.payment_id + '\')">✅ Verify</button>':'<span style="color:#276749;font-size:13px;">✓ Done</span>')+'</div>';
     });
     document.getElementById('paymentsList').innerHTML=html;
