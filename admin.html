@@ -40,23 +40,35 @@ input:focus{border-color:#6C63FF;}
 </div>
 <script>
 var adminPass = '';
+
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('passInput').addEventListener('keydown', function(e){
+    if(e.key === 'Enter') login();
+  });
+  document.querySelector('.btn').addEventListener('click', function(){
+    login();
+  });
+});
+
 function login(){
   var pass = document.getElementById('passInput').value;
+  if(!pass){ document.getElementById('loginErr').textContent='Enter password!'; return; }
   fetch('/api/admin_verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'login',password:pass})})
   .then(function(r){return r.json();}).then(function(d){
-    if(d.ok){ adminPass=pass; document.getElementById('loginBox').style.display='none'; document.getElementById('adminPanel').style.display='block'; loadPayments(); }
-    else { document.getElementById('loginErr').textContent='Wrong password!'; }
+    if(d.ok){
+      adminPass=pass;
+      document.getElementById('loginBox').style.display='none';
+      document.getElementById('adminPanel').style.display='block';
+      loadPayments();
+    } else {
+      document.getElementById('loginErr').textContent='Wrong password!';
+    }
+  }).catch(function(){
+    document.getElementById('loginErr').textContent='Network error. Try again.';
   });
 }
+
 function loadPayments(){
-  fetch('/api/admin_verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'list',password:adminPass})})
-  .then(function(r){return r.json();}).then(function(d){
-    if(!d.payments||d.payments.length===0){
-      document.getElementById('paymentsList').innerHTML='<p style="text-align:center;color:#888;padding:2rem;">No payments yet.</p>';
-      return;
-    }
-    var html='';
-    function loadPayments(){
   fetch('/api/admin_verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'list',password:adminPass})})
   .then(function(r){return r.json();}).then(function(d){
     var payments = Array.isArray(d) ? d : (d.payments || []);
@@ -71,11 +83,7 @@ function loadPayments(){
     document.getElementById('paymentsList').innerHTML=html;
   });
 }
-      html+='<div class="payment-row"><span class="pid">'+p.payment_id+'</span><span class="status-'+(p.status==='verified'?'verified':'pending')+'">'+p.status+'</span>'+(p.status!=='verified'?'<button class="verify-btn" onclick="approvePayment(\'' + p.payment_id + '\')">✅ Verify</button>':'<span style="color:#276749;font-size:13px;">✓ Done</span>')+'</div>';
-    });
-    document.getElementById('paymentsList').innerHTML=html;
-  });
-}
+
 function approvePayment(pid){
   fetch('/api/admin_verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'verify',password:adminPass,payment_id:pid})})
   .then(function(r){return r.json();}).then(function(){loadPayments();});
