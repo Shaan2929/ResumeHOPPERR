@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if(req.method === 'OPTIONS') return res.status(200).end();
 
-  const { action, token, plan, email } = req.body;
+  const { action, token, plan } = req.body;
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const SUPABASE_KEY = process.env.SUPABASE_KEY;
   const headers = {
@@ -16,12 +16,19 @@ export default async function handler(req, res) {
 
   if(action === 'create'){
     try {
+      // For lifetime plan token is the email, for token plan it's the random token
       const r = await fetch(SUPABASE_URL + '/rest/v1/payments', {
         method: 'POST',
         headers,
-        body: JSON.stringify({ token, plan: plan || 'token', status: 'pending', used: false })
+        body: JSON.stringify({
+          token: token,
+          plan: plan || 'token',
+          status: 'pending',
+          used: false
+        })
       });
       const text = await r.text();
+      console.log('INSERT:', r.status, text);
       return res.status(200).json({ ok: true, supabase_status: r.status });
     } catch(e) {
       return res.status(500).json({ error: e.message });
@@ -30,15 +37,17 @@ export default async function handler(req, res) {
 
   if(action === 'check'){
     try {
-      const identifier = token;
-      const r = await fetch(SUPABASE_URL + '/rest/v1/payments?token=eq.' + encodeURIComponent(identifier) + '&select=status,plan,used', { headers });
+      const r = await fetch(
+        SUPABASE_URL + '/rest/v1/payments?token=eq.' + encodeURIComponent(token) + '&select=status,plan,used',
+        { headers }
+      );
       const data = await r.json();
       if(!data || data.length === 0) return res.status(200).json({ verified: false, reason: 'not_found' });
       const record = data[0];
       if(record.status !== 'verified') return res.status(200).json({ verified: false, reason: 'pending' });
       if(record.plan === 'token' && record.used) return res.status(200).json({ verified: false, reason: 'used' });
       if(record.plan === 'token'){
-        await fetch(SUPABASE_URL + '/rest/v1/payments?token=eq.' + encodeURIComponent(identifier), {
+        await fetch(SUPABASE_URL + '/rest/v1/payments?token=eq.' + encodeURIComponent(token), {
           method: 'PATCH',
           headers,
           body: JSON.stringify({ used: true })
