@@ -20,20 +20,22 @@ Return exactly this JSON:
   "improvements": ["<improvement>", "<improvement>", "<improvement>", "<improvement>"],
   "keywords_found": ["<keyword>", "<keyword>", "<keyword>", "<keyword>", "<keyword>"],
   "keywords_missing": ["<missing>", "<missing>", "<missing>", "<missing>"],
-  "improved_resume": "<the FULL rewritten and improved version of the resume as plain text with proper sections like NAME, CONTACT, SUMMARY, EXPERIENCE, EDUCATION, SKILLS — make it ATS-optimized, professional, and compelling. Use newlines to separate sections. This should be a complete resume ready to submit.>"
+  "improved_resume": "<full rewritten resume as plain text with sections NAME, CONTACT, SUMMARY, EXPERIENCE, EDUCATION, SKILLS>"
 }`;
 
   try {
-    const response = await fetch(''https://openrouter.ai/api/v1/chat/completions'', {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'HTTP-Referer': 'https://resume-hopperr.vercel.app',
+        'X-Title': 'ResumeHopper'
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'openai/gpt-4o-mini',
         messages: [
-          { role: 'system', content: 'You are an expert ATS resume reviewer and professional resume writer. Always respond with valid JSON only.' },
+          { role: 'system', content: 'You are an expert ATS resume reviewer. Always respond with valid JSON only.' },
           { role: 'user', content: prompt }
         ],
         temperature: 0.3,
@@ -42,7 +44,7 @@ Return exactly this JSON:
     });
 
     const data = await response.json();
-    if(!response.ok) return res.status(500).json({ error: data.error?.message || 'OpenAI error' });
+    if(!response.ok) return res.status(500).json({ error: data.error?.message || 'OpenRouter error' });
 
     let raw = data.choices[0].message.content.trim();
     raw = raw.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/```\s*$/, '').trim();
