@@ -9,11 +9,9 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
-
-/* ── HERO ── */
 .hero{background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 50%,#DB2777 100%);padding:3.5rem 1.5rem 4rem;text-align:center;color:white;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:600;margin-bottom:1.5rem;letter-spacing:0.05em;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:600;margin-bottom:1.5rem;letter-spacing:.05em;}
 .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:.6rem;line-height:1.15;}
 .hero h1 span{background:linear-gradient(90deg,#FDE68A,#FCA5A5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero>p{font-size:15px;opacity:.88;margin-bottom:2.5rem;line-height:1.6;}
@@ -22,15 +20,11 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
 .fc .icon{font-size:22px;display:block;margin-bottom:6px;}
 .fc h3{font-size:12px;font-weight:700;color:white;margin-bottom:3px;}
 .fc p{font-size:10px;color:rgba(255,255,255,.75);line-height:1.4;}
-
-/* ── MAIN ── */
 .main{max-width:600px;margin:0 auto;padding:2rem 1rem 4rem;}
-
-/* ── PLANS ── */
 .plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:2rem;}
 .plan-card{background:white;border-radius:20px;padding:1.5rem;box-shadow:0 4px 24px rgba(79,70,229,.08);border:2px solid transparent;transition:transform .2s,box-shadow .2s;}
 .plan-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,70,229,.15);}
-.plan-card.featured{border-color:#4F46E5;background:linear-gradient(white,white) padding-box,linear-gradient(135deg,#4F46E5,#DB2777) border-box;}
+.plan-card.featured{border-color:#4F46E5;}
 .plan-badge{font-size:10px;font-weight:800;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:.75rem;letter-spacing:.05em;}
 .plan-badge.purple{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:white;}
 .plan-badge.green{background:linear-gradient(135deg,#059669,#10B981);color:white;}
@@ -40,21 +34,17 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
 .plan-desc{font-size:11px;color:#888;margin:.5rem 0 1rem;line-height:1.5;}
 .plan-features{list-style:none;text-align:left;margin-bottom:1.25rem;}
 .plan-features li{font-size:11.5px;color:#555;padding:4px 0;display:flex;gap:7px;align-items:flex-start;}
-.plan-features li::before{content:"✓";color:#4F46E5;font-weight:700;flex-shrink:0;margin-top:1px;}
+.plan-features li::before{content:"\2713";color:#4F46E5;font-weight:700;flex-shrink:0;margin-top:1px;}
 .btn{border:none;padding:11px;border-radius:12px;font-size:13px;font-weight:700;width:100%;cursor:pointer;transition:opacity .2s,transform .1s;}
 .btn:hover{opacity:.9;transform:scale(0.99);}
 .btn-purple{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:white;}
 .btn-green{background:linear-gradient(135deg,#059669,#10B981);color:white;}
-
-/* ── UPLOAD CARD ── */
 .card{background:white;border-radius:20px;padding:1.5rem;margin-bottom:2rem;box-shadow:0 4px 24px rgba(79,70,229,.08);}
 .upload-area{border:2px dashed #C7D2FE;border-radius:14px;padding:2.5rem 1rem;text-align:center;cursor:pointer;transition:all .25s;background:linear-gradient(135deg,#EEF2FF,#F5F3FF);}
 .upload-area:hover{border-color:#4F46E5;background:linear-gradient(135deg,#E0E7FF,#EDE9FE);}
 .uicon{font-size:40px;display:block;margin-bottom:.75rem;}
 .upload-area p{font-size:14px;color:#888;}
 .upload-area p strong{color:#4F46E5;}
-
-/* ── SPINNER ── */
 .spin-box{text-align:center;padding:2.5rem 1rem;display:none;}
 .spin-ring{width:56px;height:56px;border:4px solid #EDE9FE;border-top-color:#4F46E5;border-radius:50%;animation:spin .75s linear infinite;margin:0 auto 1.25rem;}
 @keyframes spin{to{transform:rotate(360deg);}}
@@ -65,15 +55,11 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
 .spin-step-dot{width:8px;height:8px;border-radius:50%;background:#C7D2FE;animation:pulse 1.5s ease-in-out infinite;}
 .spin-step-dot.active{background:#4F46E5;}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
-
-/* ── RESULTS ── */
 .res-section{background:white;border-radius:20px;padding:1.75rem;margin-bottom:2rem;box-shadow:0 4px 24px rgba(79,70,229,.08);display:none;}
 .res-section.show{display:block;}
 .lock{padding:1.25rem;background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border:1.5px solid #F6C90E;border-radius:14px;margin-bottom:1rem;}
 .lock strong{display:block;font-size:14px;color:#92400E;margin-bottom:8px;text-align:center;}
 .blurred{filter:blur(6px);pointer-events:none;user-select:none;}
-
-/* Score section */
 .score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
 .score-badge{background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border:1.5px solid #6EE7B7;border-radius:16px;padding:.75rem 1.25rem;text-align:center;min-width:90px;}
 .slabel{font-size:10px;font-weight:700;color:#065F46;letter-spacing:.06em;margin-bottom:2px;}
@@ -89,31 +75,21 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
 .kw{background:#EEF2FF;color:#4338CA;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:20px;}
 .kw.miss{background:#FFF1F2;color:#BE123C;}
 .sumbox{background:linear-gradient(135deg,#F8FAFF,#F0F4FF);border:1px solid #E0E7FF;border-left:3px solid #4F46E5;border-radius:10px;padding:1rem;font-size:13px;color:#374151;line-height:1.8;margin-top:8px;}
-
-/* ── DOWNLOAD BUTTON ── */
 .dl-section{margin-top:1.75rem;padding:1.5rem;background:linear-gradient(135deg,#F0FDF4,#ECFDF5);border:1px solid #BBF7D0;border-radius:16px;}
 .dl-section h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:#065F46;margin-bottom:.35rem;}
 .dl-section p{font-size:12px;color:#6B7280;margin-bottom:1rem;line-height:1.5;}
-.dlbtn{display:flex;align-items:center;justify-content:center;gap:8px;color:white;border:none;border-radius:12px;padding:13px;text-align:center;cursor:pointer;width:100%;font-size:14px;font-weight:700;background:linear-gradient(135deg,#059669,#10B981);transition:opacity .2s,transform .1s;}
-.dlbtn:hover{opacity:.92;transform:scale(0.99);}
+.dlbtn{display:flex;align-items:center;justify-content:center;gap:8px;color:white;border:none;border-radius:12px;padding:13px;text-align:center;cursor:pointer;width:100%;font-size:14px;font-weight:700;background:linear-gradient(135deg,#059669,#10B981);transition:opacity .2s;}
+.dlbtn:hover{opacity:.92;}
 .dlbtn:disabled{opacity:.6;cursor:not-allowed;}
-
-/* ── RESUME PREVIEW ── */
 #resumePreview{margin-top:1.5rem;border-radius:16px;overflow:hidden;border:1px solid #E0E7FF;display:none;}
-
-/* ── VERIFY ── */
 .verify-section{background:#F8FAFF;border-radius:12px;padding:1rem;margin-top:.75rem;}
 .verify-input{width:100%;border:1.5px solid #E0E7FF;border-radius:10px;padding:11px 13px;font-size:14px;color:#1a1a2e;margin-bottom:10px;outline:none;font-family:inherit;}
 .verify-input:focus{border-color:#4F46E5;box-shadow:0 0 0 3px rgba(79,70,229,.1);}
 .verify-btn{width:100%;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:white;border:none;padding:13px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:6px;font-family:inherit;}
 .verify-btn:hover{opacity:.9;}
-
-/* ── FOOTER ── */
 .footer{background:#1a1a2e;padding:2rem 1.5rem;text-align:center;color:#888;font-size:13px;}
 .footer a{color:#a78bfa;text-decoration:none;}
 .footer p{margin-bottom:6px;}
-
-/* ── OVERLAY ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(15,10,40,.7);backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center;padding:1rem;}
 .overlay.open{display:flex;}
 .popup{background:white;border-radius:24px;padding:1.75rem 1.5rem;width:100%;max-width:400px;text-align:center;max-height:90vh;overflow-y:auto;}
@@ -137,57 +113,49 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
 .err-box{background:#FFF1F2;border:1.5px solid #FECDD3;border-radius:12px;padding:1rem;font-size:13px;color:#BE123C;margin-top:1rem;display:none;}
 .field-label{font-size:12px;font-weight:600;color:#555;margin-bottom:5px;text-align:left;display:block;}
 .field-input{width:100%;border:1.5px solid #E0E7FF;border-radius:10px;padding:11px 13px;font-size:14px;color:#1a1a2e;margin-bottom:12px;outline:none;font-family:inherit;}
-.field-input:focus{border-color:#4F46E5;box-shadow:0 0 0 3px rgba(79,70,229,.1);}
+.field-input:focus{border-color:#4F46E5;}
 .pid-box{background:#EEF2FF;border-radius:12px;padding:1rem;margin:1rem 0;text-align:center;}
 .pid-box strong{display:block;font-size:22px;font-family:monospace;margin:.5rem 0;color:#4F46E5;letter-spacing:3px;}
-
-/* ══════════════════════════════════════════
-   BEAUTIFUL RESUME TEMPLATE (HTML preview)
-   ══════════════════════════════════════════ */
-.resume-wrap{font-family:'Inter',sans-serif;background:white;max-width:750px;margin:0 auto;}
-.resume-header{background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 55%,#DB2777 100%);padding:36px 40px 28px;color:white;position:relative;overflow:hidden;}
+.resume-wrap{font-family:'Inter',sans-serif;background:white;}
+.resume-header{background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 55%,#DB2777 100%);padding:32px 36px 24px;color:white;position:relative;overflow:hidden;}
 .resume-header::after{content:'';position:absolute;right:-60px;top:-60px;width:240px;height:240px;background:rgba(255,255,255,0.07);border-radius:50%;}
-.resume-header::before{content:'';position:absolute;left:30%;bottom:-40px;width:180px;height:180px;background:rgba(255,255,255,0.05);border-radius:50%;}
-.r-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.5px;margin-bottom:4px;position:relative;z-index:1;}
-.r-title{font-size:14px;font-weight:500;opacity:.88;margin-bottom:14px;letter-spacing:.02em;position:relative;z-index:1;}
-.r-contact{display:flex;flex-wrap:wrap;gap:8px 18px;position:relative;z-index:1;}
-.r-contact span{font-size:11.5px;opacity:.9;display:flex;align-items:center;gap:4px;}
+.r-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.5px;margin-bottom:3px;position:relative;z-index:1;}
+.r-title{font-size:13px;font-weight:500;opacity:.88;margin-bottom:12px;position:relative;z-index:1;}
+.r-contact{display:flex;flex-wrap:wrap;gap:6px 16px;position:relative;z-index:1;}
+.r-contact span{font-size:11px;opacity:.9;display:flex;align-items:center;gap:4px;}
 .r-contact span::before{content:'';width:4px;height:4px;background:rgba(255,255,255,.6);border-radius:50%;flex-shrink:0;}
-.r-body{padding:0;}
-.r-col-wrap{display:grid;grid-template-columns:200px 1fr;}
-.r-sidebar{background:#F8F9FF;padding:24px 20px;border-right:1px solid #EEF0FF;}
-.r-main{padding:24px 28px;}
-.r-sec-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4F46E5;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #E0E7FF;display:flex;align-items:center;gap:6px;}
-.r-sec-title::before{content:'';width:12px;height:3px;background:linear-gradient(135deg,#4F46E5,#DB2777);border-radius:2px;flex-shrink:0;}
-.r-sidebar-section{margin-bottom:22px;}
-.r-skill-item{margin-bottom:10px;}
-.r-skill-name{font-size:11.5px;font-weight:600;color:#374151;margin-bottom:4px;}
-.r-skill-bar{height:4px;background:#E0E7FF;border-radius:2px;overflow:hidden;}
+.r-col-wrap{display:grid;grid-template-columns:185px 1fr;}
+.r-sidebar{background:#F8F9FF;padding:20px 16px;border-right:1px solid #EEF0FF;}
+.r-main{padding:20px 24px;}
+.r-sec-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4F46E5;margin-bottom:10px;padding-bottom:5px;border-bottom:1.5px solid #E0E7FF;display:flex;align-items:center;gap:5px;}
+.r-sec-title::before{content:'';width:10px;height:3px;background:linear-gradient(135deg,#4F46E5,#DB2777);border-radius:2px;flex-shrink:0;}
+.r-sidebar-section{margin-bottom:18px;}
+.r-skill-item{margin-bottom:8px;}
+.r-skill-name{font-size:11px;font-weight:600;color:#374151;margin-bottom:3px;}
+.r-skill-bar{height:3px;background:#E0E7FF;border-radius:2px;}
 .r-skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#4F46E5,#7C3AED);}
-.r-tag{display:inline-block;background:#EEF2FF;color:#4338CA;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:6px;margin:2px 3px 2px 0;}
-.r-info-item{font-size:11.5px;color:#555;margin-bottom:6px;line-height:1.5;}
-.r-info-label{font-weight:700;color:#374151;}
-.r-job{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #F3F4F6;position:relative;}
+.r-tag{display:inline-block;background:#EEF2FF;color:#4338CA;font-size:10px;font-weight:600;padding:2px 7px;border-radius:5px;margin:2px 2px 2px 0;}
+.r-info-item{font-size:11px;color:#555;margin-bottom:5px;line-height:1.5;}
+.r-edu-item{margin-bottom:12px;}
+.r-edu-deg{font-size:11px;font-weight:700;color:#1a1a2e;}
+.r-edu-school{font-size:10px;color:#4F46E5;font-weight:600;margin-bottom:1px;}
+.r-edu-date{font-size:9.5px;color:#6B7280;}
+.r-achievement{display:flex;gap:8px;align-items:flex-start;margin-bottom:7px;}
+.r-achievement-text{font-size:11px;color:#374151;line-height:1.5;}
+.r-summary-text{font-size:11.5px;color:#374151;line-height:1.8;background:#F8F9FF;padding:10px 12px;border-radius:7px;border-left:3px solid #4F46E5;}
+.r-job{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #F3F4F6;}
 .r-job:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
 .r-job-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px;flex-wrap:wrap;gap:4px;}
-.r-job-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#1a1a2e;}
-.r-job-date{font-size:11px;color:#6B7280;background:#F3F4F6;padding:2px 8px;border-radius:20px;white-space:nowrap;}
-.r-job-company{font-size:12px;color:#4F46E5;font-weight:600;margin-bottom:8px;}
+.r-job-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:#1a1a2e;}
+.r-job-date{font-size:10px;color:#6B7280;background:#F3F4F6;padding:2px 7px;border-radius:20px;}
+.r-job-company{font-size:11px;color:#4F46E5;font-weight:600;margin-bottom:6px;}
 .r-bullets{list-style:none;padding:0;}
-.r-bullets li{font-size:12px;color:#374151;padding:3px 0 3px 14px;position:relative;line-height:1.65;}
-.r-bullets li::before{content:'';position:absolute;left:2px;top:11px;width:5px;height:5px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#DB2777);flex-shrink:0;}
-.r-bullets li strong{color:#1a1a2e;font-weight:600;}
-.r-edu-item{margin-bottom:14px;}
-.r-edu-deg{font-size:13px;font-weight:700;color:#1a1a2e;}
-.r-edu-school{font-size:11.5px;color:#4F46E5;font-weight:600;margin-bottom:2px;}
-.r-edu-date{font-size:11px;color:#6B7280;}
-.r-achievement{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;}
-.r-achievement-icon{font-size:16px;flex-shrink:0;}
-.r-achievement-text{font-size:12px;color:#374151;line-height:1.6;}
-.r-summary-text{font-size:12.5px;color:#374151;line-height:1.8;background:#F8F9FF;padding:12px 14px;border-radius:8px;border-left:3px solid #4F46E5;}
-.resume-footer{background:#1a1a2e;padding:10px 28px;display:flex;justify-content:space-between;align-items:center;}
-.resume-footer span{font-size:10px;color:rgba(255,255,255,.4);}
-.resume-footer .brand{color:rgba(255,255,255,.7);font-weight:600;font-size:10px;}
+.r-bullets li{font-size:11.5px;color:#374151;padding:2.5px 0 2.5px 13px;position:relative;line-height:1.65;}
+.r-bullets li::before{content:'';position:absolute;left:1px;top:9px;width:5px;height:5px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#DB2777);}
+.r-section-wrap{margin-bottom:16px;}
+.resume-footer{background:#1a1a2e;padding:9px 24px;display:flex;justify-content:space-between;align-items:center;}
+.resume-footer span{font-size:9px;color:rgba(255,255,255,.4);}
+.resume-footer .brand{color:rgba(255,255,255,.7);font-weight:700;font-size:10px;}
 </style>
 </head>
 <body>
@@ -255,7 +223,6 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
     <div class="err-box" id="errBox"></div>
   </div>
 
-  <!-- RESULTS -->
   <div id="resSection" class="res-section">
     <div id="lockDiv" class="lock">
       <strong>🔒 Purchase required to view full results</strong>
@@ -273,7 +240,6 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
         <div id="verifyMsg" style="font-size:13px;margin-top:4px;text-align:center;"></div>
       </div>
     </div>
-
     <div id="resultDiv" class="blurred">
       <div class="score-row">
         <div>
@@ -286,22 +252,16 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
           <div class="ssub">/10</div>
         </div>
       </div>
-
       <div class="stitle">📝 Overall Summary</div>
       <div class="sumbox" id="summaryEl"></div>
-
       <div class="stitle">✅ Strengths</div>
       <ul class="ilist" id="strengthsEl"></ul>
-
       <div class="stitle">⚠️ Areas to Improve</div>
       <ul class="ilist" id="improveEl"></ul>
-
       <div class="stitle">🔑 Keywords Found</div>
       <div class="kw-wrap" id="kwFound"></div>
-
       <div class="stitle">❌ Missing Keywords</div>
       <div class="kw-wrap" id="kwMissing"></div>
-
       <div class="dl-section">
         <h3>🎨 Your AI-Improved Resume is Ready</h3>
         <p>GPT-4o has enhanced your resume with stronger language, more impactful bullet points, and a beautiful professional design that HRs love.</p>
@@ -309,7 +269,6 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
           <span>⬇</span> Download Beautiful Resume PDF
         </button>
       </div>
-
       <div id="resumePreview"></div>
     </div>
   </div>
@@ -321,7 +280,6 @@ body{font-family:'Inter',sans-serif;background:#f0f2f8;color:#1a1a2e;}
   <p style="margin-top:12px;font-size:11px;">© 2026 ResumeHopper. All rights reserved.</p>
 </div>
 
-<!-- PAYMENT OVERLAY -->
 <div class="overlay" id="payOverlay">
   <div class="popup">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
@@ -420,6 +378,7 @@ function openPayment(plan){
   document.getElementById('step4txt').textContent = isLifetime ? 'Enter your email to unlock' : 'Enter your token to unlock';
   if(!isLifetime){ currentToken = generateToken(); document.getElementById('displayToken').textContent = currentToken; }
 }
+
 function saveAndClose(){
   if(currentPlan === 'lifetime'){
     var email = document.getElementById('lifetimeEmail').value.trim();
@@ -429,13 +388,16 @@ function saveAndClose(){
   }
   closePayment();
 }
+
 function closePayment(){ document.getElementById('payOverlay').classList.remove('open'); }
+
 function showTab(tab){
   ['upi','btc','sol','ltc','usdt'].forEach(function(t){
     document.getElementById('pay-'+t).classList.toggle('active',t===tab);
     document.getElementById('tab-'+t).classList.toggle('active',t===tab);
   });
 }
+
 function copyAddr(addr,elId){
   navigator.clipboard.writeText(addr).then(function(){
     var el=document.getElementById(elId);
@@ -443,6 +405,7 @@ function copyAddr(addr,elId){
     setTimeout(function(){el.textContent='📋 copy'; el.style.color='#4F46E5';},2000);
   });
 }
+
 document.getElementById('payOverlay').addEventListener('click',function(e){if(e.target===this)closePayment();});
 
 function toggleVerifyMode(mode){
@@ -450,6 +413,7 @@ function toggleVerifyMode(mode){
   document.getElementById('verifyInput').value='';
   document.getElementById('verifyMsg').textContent='';
 }
+
 function verifyAccess(){
   var val=document.getElementById('verifyInput').value.trim();
   var mode=document.querySelector('input[name="planType"]:checked').value;
@@ -461,12 +425,13 @@ function verifyAccess(){
       if(d.verified){
         document.getElementById('lockDiv').style.display='none';
         document.getElementById('resultDiv').classList.remove('blurred');
-        document.getElementById('resumePreview').style.display='block';
+        if(resumeJSON) document.getElementById('resumePreview').style.display='block';
       } else if(d.reason==='used'){showVerifyMsg('❌ This token has already been used!','#BE123C');}
       else if(d.reason==='not_found'){showVerifyMsg('❌ ID not found. Check your email or token.','#BE123C');}
       else{showVerifyMsg('❌ Payment not verified yet. Please wait for admin approval.','#BE123C');}
     }).catch(function(){showVerifyMsg('❌ Network error. Try again.','#BE123C');});
 }
+
 function showVerifyMsg(msg,color){var el=document.getElementById('verifyMsg');el.textContent=msg;el.style.color=color;}
 
 function handleFile(input){
@@ -488,12 +453,12 @@ function handleFile(input){
 function animateSpinSteps(){
   var dots=document.querySelectorAll('.spin-step-dot');
   var i=0;
-  var iv=setInterval(function(){
+  if(window._spinInterval)clearInterval(window._spinInterval);
+  window._spinInterval=setInterval(function(){
     dots.forEach(function(d){d.classList.remove('active');});
     if(i<dots.length)dots[i].classList.add('active');
     i=(i+1)%dots.length;
   },2500);
-  window._spinInterval=iv;
 }
 
 function extractPDF(file){
@@ -539,8 +504,8 @@ function renderResults(r){
   se.textContent=score;
   se.style.color=score>=7?'#065F46':score>=5?'#92400E':'#BE123C';
   document.getElementById('summaryEl').textContent=r.summary;
-  document.getElementById('strengthsEl').innerHTML=r.strengths.map(function(s){return'<li><span class="gb">✓</span>'+s+'</li>';}).join('');
-  document.getElementById('improveEl').innerHTML=r.improvements.map(function(i){return'<li><span class="rb">•</span>'+i+'</li>';}).join('');
+  document.getElementById('strengthsEl').innerHTML=r.strengths.map(function(s){return'<li><span class="gb">\u2713</span>'+s+'</li>';}).join('');
+  document.getElementById('improveEl').innerHTML=r.improvements.map(function(i){return'<li><span class="rb">&#8226;</span>'+i+'</li>';}).join('');
   document.getElementById('kwFound').innerHTML=r.keywords_found.map(function(k){return'<span class="kw">'+k+'</span>';}).join('');
   document.getElementById('kwMissing').innerHTML=r.keywords_missing.map(function(k){return'<span class="kw miss">'+k+'</span>';}).join('');
   if(r.resume_json){ renderResumePreview(r.resume_json); }
@@ -549,96 +514,53 @@ function renderResults(r){
 }
 
 function renderResumePreview(rj){
-  var html='<div class="resume-wrap">';
-  html+='<div class="resume-header">';
-  html+='<div class="r-name">'+(rj.name||'')+'</div>';
-  if(rj.title)html+='<div class="r-title">'+(rj.title)+'</div>';
-  if(rj.contact&&rj.contact.length){
-    html+='<div class="r-contact">';
-    rj.contact.forEach(function(c){html+='<span>'+c+'</span>';});
-    html+='</div>';
-  }
-  html+='</div>';
-  html+='<div class="r-body"><div class="r-col-wrap">';
-  html+='<div class="r-sidebar">';
+  var h='<div class="resume-wrap">';
+  h+='<div class="resume-header">';
+  h+='<div class="r-name">'+(rj.name||'')+'</div>';
+  if(rj.title)h+='<div class="r-title">'+rj.title+'</div>';
+  if(rj.contact&&rj.contact.length){h+='<div class="r-contact">';rj.contact.forEach(function(c){h+='<span>'+c+'</span>';});h+='</div>';}
+  h+='</div>';
+  h+='<div class="r-col-wrap">';
+  h+='<div class="r-sidebar">';
   if(rj.skills&&rj.skills.length){
-    html+='<div class="r-sidebar-section"><div class="r-sec-title">Skills</div>';
-    rj.skills.forEach(function(s){
-      var pct=s.level||75;
-      html+='<div class="r-skill-item"><div class="r-skill-name">'+s.name+'</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:'+pct+'%"></div></div></div>';
-    });
-    html+='</div>';
+    h+='<div class="r-sidebar-section"><div class="r-sec-title">Skills</div>';
+    rj.skills.forEach(function(s){h+='<div class="r-skill-item"><div class="r-skill-name">'+s.name+'</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:'+(s.level||75)+'%"></div></div></div>';});
+    h+='</div>';
   }
-  if(rj.tools&&rj.tools.length){
-    html+='<div class="r-sidebar-section"><div class="r-sec-title">Tools &amp; Tech</div><div>';
-    rj.tools.forEach(function(t){html+='<span class="r-tag">'+t+'</span>';});
-    html+='</div></div>';
-  }
-  if(rj.languages&&rj.languages.length){
-    html+='<div class="r-sidebar-section"><div class="r-sec-title">Languages</div>';
-    rj.languages.forEach(function(l){html+='<div class="r-info-item">'+l+'</div>';});
-    html+='</div>';
-  }
-  if(rj.education&&rj.education.length){
-    html+='<div class="r-sidebar-section"><div class="r-sec-title">Education</div>';
-    rj.education.forEach(function(e){
-      html+='<div class="r-edu-item"><div class="r-edu-deg">'+(e.degree||'')+'</div><div class="r-edu-school">'+(e.school||'')+'</div><div class="r-edu-date">'+(e.date||'')+'</div></div>';
-    });
-    html+='</div>';
-  }
-  if(rj.achievements&&rj.achievements.length){
-    html+='<div class="r-sidebar-section"><div class="r-sec-title">Achievements</div>';
-    rj.achievements.forEach(function(a){
-      html+='<div class="r-achievement"><span class="r-achievement-icon">🏆</span><div class="r-achievement-text">'+a+'</div></div>';
-    });
-    html+='</div>';
-  }
-  if(rj.certifications&&rj.certifications.length){
-    html+='<div class="r-sidebar-section"><div class="r-sec-title">Certifications</div>';
-    rj.certifications.forEach(function(c){html+='<div class="r-info-item"><span class="r-info-label">'+c+'</span></div>';});
-    html+='</div>';
-  }
-  html+='</div>';
-  html+='<div class="r-main">';
-  if(rj.summary){
-    html+='<div style="margin-bottom:20px"><div class="r-sec-title">Professional Summary</div>';
-    html+='<div class="r-summary-text">'+rj.summary+'</div></div>';
-  }
+  if(rj.tools&&rj.tools.length){h+='<div class="r-sidebar-section"><div class="r-sec-title">Tools &amp; Tech</div><div>';rj.tools.forEach(function(t){h+='<span class="r-tag">'+t+'</span>';});h+='</div></div>';}
+  if(rj.languages&&rj.languages.length){h+='<div class="r-sidebar-section"><div class="r-sec-title">Languages</div>';rj.languages.forEach(function(l){h+='<div class="r-info-item">'+l+'</div>';});h+='</div>';}
+  if(rj.education&&rj.education.length){h+='<div class="r-sidebar-section"><div class="r-sec-title">Education</div>';rj.education.forEach(function(e){h+='<div class="r-edu-item"><div class="r-edu-deg">'+(e.degree||'')+'</div><div class="r-edu-school">'+(e.school||'')+'</div><div class="r-edu-date">'+(e.date||'')+'</div></div>';});h+='</div>';}
+  if(rj.achievements&&rj.achievements.length){h+='<div class="r-sidebar-section"><div class="r-sec-title">Achievements</div>';rj.achievements.forEach(function(a){h+='<div class="r-achievement"><span style="font-size:14px">🏆</span><div class="r-achievement-text">'+a+'</div></div>';});h+='</div>';}
+  if(rj.certifications&&rj.certifications.length){h+='<div class="r-sidebar-section"><div class="r-sec-title">Certifications</div>';rj.certifications.forEach(function(c){h+='<div class="r-info-item"><strong>'+c+'</strong></div>';});h+='</div>';}
+  h+='</div>';
+  h+='<div class="r-main">';
+  if(rj.summary){h+='<div class="r-section-wrap"><div class="r-sec-title">Professional Summary</div><div class="r-summary-text">'+rj.summary+'</div></div>';}
   if(rj.experience&&rj.experience.length){
-    html+='<div style="margin-bottom:20px"><div class="r-sec-title">Work Experience</div>';
+    h+='<div class="r-section-wrap"><div class="r-sec-title">Work Experience</div>';
     rj.experience.forEach(function(job){
-      html+='<div class="r-job">';
-      html+='<div class="r-job-header"><div class="r-job-title">'+(job.title||'')+'</div><div class="r-job-date">'+(job.date||'')+'</div></div>';
-      html+='<div class="r-job-company">'+(job.company||'')+(job.location?' · '+job.location:'')+'</div>';
-      if(job.bullets&&job.bullets.length){
-        html+='<ul class="r-bullets">';
-        job.bullets.forEach(function(b){html+='<li>'+b+'</li>';});
-        html+='</ul>';
-      }
-      html+='</div>';
+      h+='<div class="r-job"><div class="r-job-header"><div class="r-job-title">'+(job.title||'')+'</div><div class="r-job-date">'+(job.date||'')+'</div></div>';
+      h+='<div class="r-job-company">'+(job.company||'')+(job.location?' · '+job.location:'')+'</div>';
+      if(job.bullets&&job.bullets.length){h+='<ul class="r-bullets">';job.bullets.forEach(function(b){h+='<li>'+b+'</li>';});h+='</ul>';}
+      h+='</div>';
     });
-    html+='</div>';
+    h+='</div>';
   }
   if(rj.projects&&rj.projects.length){
-    html+='<div style="margin-bottom:20px"><div class="r-sec-title">Projects</div>';
+    h+='<div class="r-section-wrap"><div class="r-sec-title">Projects</div>';
     rj.projects.forEach(function(p){
-      html+='<div class="r-job">';
-      html+='<div class="r-job-header"><div class="r-job-title">'+(p.name||'')+'</div><div class="r-job-date">'+(p.date||'')+'</div></div>';
-      if(p.tech)html+='<div class="r-job-company">'+p.tech+'</div>';
-      if(p.bullets&&p.bullets.length){
-        html+='<ul class="r-bullets">';
-        p.bullets.forEach(function(b){html+='<li>'+b+'</li>';});
-        html+='</ul>';
-      }
-      html+='</div>';
+      h+='<div class="r-job"><div class="r-job-header"><div class="r-job-title">'+(p.name||'')+'</div><div class="r-job-date">'+(p.date||'')+'</div></div>';
+      if(p.tech)h+='<div class="r-job-company">'+p.tech+'</div>';
+      if(p.bullets&&p.bullets.length){h+='<ul class="r-bullets">';p.bullets.forEach(function(b){h+='<li>'+b+'</li>';});h+='</ul>';}
+      h+='</div>';
     });
-    html+='</div>';
+    h+='</div>';
   }
-  html+='</div></div></div>';
-  html+='<div class="resume-footer"><span>Generated by ResumeHopper.ai</span><span class="brand">ResumeHopper</span></div>';
-  html+='</div>';
+  h+='</div></div>';
+  h+='<div class="resume-footer"><span>Generated by ResumeHopper.ai</span><span class="brand">ResumeHopper</span></div>';
+  h+='</div>';
   var preview=document.getElementById('resumePreview');
-  preview.innerHTML=html;
+  preview.innerHTML=h;
+  preview.style.display='block';
 }
 
 function downloadImprovedPDF(){
@@ -647,128 +569,26 @@ function downloadImprovedPDF(){
   btn.innerHTML='<span>⏳</span> Preparing PDF...';
   btn.disabled=true;
   var printWin=window.open('','_blank','width=900,height=800');
-  if(!printWin){alert('Please allow popups to download PDF.');btn.innerHTML='<span>⬇</span> Download Beautiful Resume PDF';btn.disabled=false;return;}
+  if(!printWin){alert('Please allow popups to download the PDF.');btn.innerHTML='<span>⬇</span> Download Beautiful Resume PDF';btn.disabled=false;return;}
   var rj=resumeJSON;
-  var skillsHTML='';
-  if(rj.skills&&rj.skills.length){
-    skillsHTML='<div class="p-sidebar-section"><div class="p-sec-title">Skills</div>';
-    rj.skills.forEach(function(s){var pct=s.level||75;skillsHTML+='<div class="p-skill-item"><div class="p-skill-name">'+s.name+'</div><div class="p-skill-bar"><div class="p-skill-fill" style="width:'+pct+'%"></div></div></div>';});
-    skillsHTML+='</div>';
-  }
-  var toolsHTML='';
-  if(rj.tools&&rj.tools.length){
-    toolsHTML='<div class="p-sidebar-section"><div class="p-sec-title">Tools &amp; Tech</div><div>';
-    rj.tools.forEach(function(t){toolsHTML+='<span class="p-tag">'+t+'</span>';});
-    toolsHTML+='</div></div>';
-  }
-  var langsHTML='';
-  if(rj.languages&&rj.languages.length){
-    langsHTML='<div class="p-sidebar-section"><div class="p-sec-title">Languages</div>';
-    rj.languages.forEach(function(l){langsHTML+='<div class="p-info">'+l+'</div>';});
-    langsHTML+='</div>';
-  }
-  var eduHTML='';
-  if(rj.education&&rj.education.length){
-    eduHTML='<div class="p-sidebar-section"><div class="p-sec-title">Education</div>';
-    rj.education.forEach(function(e){eduHTML+='<div class="p-edu"><div class="p-edu-deg">'+(e.degree||'')+'</div><div class="p-edu-school">'+(e.school||'')+'</div><div class="p-edu-date">'+(e.date||'')+'</div></div>';});
-    eduHTML+='</div>';
-  }
-  var achHTML='';
-  if(rj.achievements&&rj.achievements.length){
-    achHTML='<div class="p-sidebar-section"><div class="p-sec-title">Achievements</div>';
-    rj.achievements.forEach(function(a){achHTML+='<div class="p-ach">🏆 '+a+'</div>';});
-    achHTML+='</div>';
-  }
-  var certHTML='';
-  if(rj.certifications&&rj.certifications.length){
-    certHTML='<div class="p-sidebar-section"><div class="p-sec-title">Certifications</div>';
-    rj.certifications.forEach(function(c){certHTML+='<div class="p-info"><strong>'+c+'</strong></div>';});
-    certHTML+='</div>';
-  }
-  var sumHTML='';
-  if(rj.summary){sumHTML='<div class="p-section"><div class="p-sec-title">Professional Summary</div><div class="p-summary">'+rj.summary+'</div></div>';}
-  var expHTML='';
-  if(rj.experience&&rj.experience.length){
-    expHTML='<div class="p-section"><div class="p-sec-title">Work Experience</div>';
-    rj.experience.forEach(function(job){
-      expHTML+='<div class="p-job"><div class="p-job-head"><div class="p-job-title">'+(job.title||'')+'</div><div class="p-job-date">'+(job.date||'')+'</div></div>';
-      expHTML+='<div class="p-job-company">'+(job.company||'')+(job.location?' &middot; '+job.location:'')+'</div>';
-      if(job.bullets&&job.bullets.length){expHTML+='<ul class="p-bullets">';job.bullets.forEach(function(b){expHTML+='<li>'+b+'</li>';});expHTML+='</ul>';}
-      expHTML+='</div>';
-    });
-    expHTML+='</div>';
-  }
-  var projHTML='';
-  if(rj.projects&&rj.projects.length){
-    projHTML='<div class="p-section"><div class="p-sec-title">Projects</div>';
-    rj.projects.forEach(function(p){
-      projHTML+='<div class="p-job"><div class="p-job-head"><div class="p-job-title">'+(p.name||'')+'</div><div class="p-job-date">'+(p.date||'')+'</div></div>';
-      if(p.tech)projHTML+='<div class="p-job-company">'+p.tech+'</div>';
-      if(p.bullets&&p.bullets.length){projHTML+='<ul class="p-bullets">';p.bullets.forEach(function(b){projHTML+='<li>'+b+'</li>';});projHTML+='</ul>';}
-      projHTML+='</div>';
-    });
-    projHTML+='</div>';
-  }
-  var fullHTML='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+(rj.name||'Resume')+' — Resume</title>';
-  fullHTML+='<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">';
-  fullHTML+='<style>';
-  fullHTML+='*{box-sizing:border-box;margin:0;padding:0;}';
-  fullHTML+='body{font-family:Inter,sans-serif;background:white;width:210mm;margin:0 auto;}';
-  fullHTML+='.p-wrap{width:210mm;min-height:297mm;background:white;display:flex;flex-direction:column;}';
-  fullHTML+='.p-header{background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 55%,#DB2777 100%);padding:28px 36px 22px;color:white;position:relative;overflow:hidden;}';
-  fullHTML+='.p-header::after{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}';
-  fullHTML+='.p-name{font-family:"Plus Jakarta Sans",sans-serif;font-size:26px;font-weight:800;letter-spacing:-.5px;margin-bottom:3px;position:relative;z-index:1;}';
-  fullHTML+='.p-title{font-size:12px;font-weight:500;opacity:.88;margin-bottom:10px;position:relative;z-index:1;}';
-  fullHTML+='.p-contact{display:flex;flex-wrap:wrap;gap:6px 14px;position:relative;z-index:1;}';
-  fullHTML+='.p-contact span{font-size:10px;opacity:.9;display:flex;align-items:center;gap:3px;}';
-  fullHTML+='.p-contact span::before{content:"";width:3px;height:3px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0;}';
-  fullHTML+='.p-body{flex:1;display:grid;grid-template-columns:175px 1fr;}';
-  fullHTML+='.p-sidebar{background:#F8F9FF;padding:18px 16px;border-right:1px solid #EEF0FF;}';
-  fullHTML+='.p-main{padding:18px 22px;}';
-  fullHTML+='.p-sec-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4F46E5;margin-bottom:8px;padding-bottom:4px;border-bottom:1.5px solid #E0E7FF;}';
-  fullHTML+='.p-sidebar-section{margin-bottom:16px;}';
-  fullHTML+='.p-skill-item{margin-bottom:7px;}';
-  fullHTML+='.p-skill-name{font-size:10px;font-weight:600;color:#374151;margin-bottom:3px;}';
-  fullHTML+='.p-skill-bar{height:3px;background:#E0E7FF;border-radius:2px;}';
-  fullHTML+='.p-skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#4F46E5,#7C3AED);}';
-  fullHTML+='.p-tag{display:inline-block;background:#EEF2FF;color:#4338CA;font-size:9px;font-weight:600;padding:2px 6px;border-radius:4px;margin:1px 2px 1px 0;}';
-  fullHTML+='.p-info{font-size:10px;color:#555;margin-bottom:4px;line-height:1.5;}';
-  fullHTML+='.p-edu{margin-bottom:10px;}';
-  fullHTML+='.p-edu-deg{font-size:10.5px;font-weight:700;color:#1a1a2e;}';
-  fullHTML+='.p-edu-school{font-size:9.5px;color:#4F46E5;font-weight:600;margin-bottom:1px;}';
-  fullHTML+='.p-edu-date{font-size:9px;color:#6B7280;}';
-  fullHTML+='.p-ach{font-size:10px;color:#374151;margin-bottom:5px;line-height:1.5;}';
-  fullHTML+='.p-section{margin-bottom:14px;}';
-  fullHTML+='.p-summary{font-size:10.5px;color:#374151;line-height:1.8;background:#F8F9FF;padding:9px 11px;border-radius:6px;border-left:2.5px solid #4F46E5;}';
-  fullHTML+='.p-job{margin-bottom:13px;padding-bottom:13px;border-bottom:0.5px solid #F3F4F6;}';
-  fullHTML+='.p-job:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}';
-  fullHTML+='.p-job-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1px;}';
-  fullHTML+='.p-job-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:11.5px;font-weight:700;color:#1a1a2e;}';
-  fullHTML+='.p-job-date{font-size:9px;color:#6B7280;background:#F3F4F6;padding:1px 6px;border-radius:20px;}';
-  fullHTML+='.p-job-company{font-size:10px;color:#4F46E5;font-weight:600;margin-bottom:5px;}';
-  fullHTML+='.p-bullets{list-style:none;padding:0;}';
-  fullHTML+='.p-bullets li{font-size:10px;color:#374151;padding:2px 0 2px 11px;position:relative;line-height:1.6;}';
-  fullHTML+='.p-bullets li::before{content:"";position:absolute;left:1px;top:8px;width:4px;height:4px;border-radius:50%;background:#4F46E5;}';
-  fullHTML+='.p-footer{background:#1a1a2e;padding:8px 28px;display:flex;justify-content:space-between;align-items:center;}';
-  fullHTML+='.p-footer span{font-size:8px;color:rgba(255,255,255,.4);}';
-  fullHTML+='.p-footer .brand{color:rgba(255,255,255,.7);font-weight:600;font-size:9px;}';
-  fullHTML+='@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}@page{margin:0;size:A4;}}';
-  fullHTML+='</style></head><body>';
-  fullHTML+='<div class="p-wrap">';
-  fullHTML+='<div class="p-header">';
-  fullHTML+='<div class="p-name">'+(rj.name||'')+'</div>';
-  if(rj.title)fullHTML+='<div class="p-title">'+rj.title+'</div>';
-  if(rj.contact&&rj.contact.length){fullHTML+='<div class="p-contact">';rj.contact.forEach(function(c){fullHTML+='<span>'+c+'</span>';});fullHTML+='</div>';}
-  fullHTML+='</div>';
-  fullHTML+='<div class="p-body">';
-  fullHTML+='<div class="p-sidebar">'+skillsHTML+toolsHTML+langsHTML+eduHTML+achHTML+certHTML+'</div>';
-  fullHTML+='<div class="p-main">'+sumHTML+expHTML+projHTML+'</div>';
-  fullHTML+='</div>';
-  fullHTML+='<div class="p-footer"><span>Generated by ResumeHopper.ai</span><span class="brand">ResumeHopper</span></div>';
-  fullHTML+='</div>';
-  fullHTML+='<script>window.onload=function(){setTimeout(function(){window.print();},600);}<\/script>';
-  fullHTML+='</body></html>';
-  printWin.document.write(fullHTML);
+  function mkSkills(){if(!rj.skills||!rj.skills.length)return'';var h='<div class="ps"><div class="pst">Skills</div>';rj.skills.forEach(function(s){h+='<div class="pski"><div class="pskin">'+s.name+'</div><div class="pskb"><div class="pskf" style="width:'+(s.level||75)+'%"></div></div></div>';});return h+'</div>';}
+  function mkTools(){if(!rj.tools||!rj.tools.length)return'';var h='<div class="ps"><div class="pst">Tools &amp; Tech</div><div>';rj.tools.forEach(function(t){h+='<span class="ptag">'+t+'</span>';});return h+'</div></div>';}
+  function mkLangs(){if(!rj.languages||!rj.languages.length)return'';var h='<div class="ps"><div class="pst">Languages</div>';rj.languages.forEach(function(l){h+='<div class="pinf">'+l+'</div>';});return h+'</div>';}
+  function mkEdu(){if(!rj.education||!rj.education.length)return'';var h='<div class="ps"><div class="pst">Education</div>';rj.education.forEach(function(e){h+='<div class="pedu"><div class="pedud">'+(e.degree||'')+'</div><div class="pedus">'+(e.school||'')+'</div><div class="pedut">'+(e.date||'')+'</div></div>';});return h+'</div>';}
+  function mkAch(){if(!rj.achievements||!rj.achievements.length)return'';var h='<div class="ps"><div class="pst">Achievements</div>';rj.achievements.forEach(function(a){h+='<div class="pach">&#127942; '+a+'</div>';});return h+'</div>';}
+  function mkCert(){if(!rj.certifications||!rj.certifications.length)return'';var h='<div class="ps"><div class="pst">Certifications</div>';rj.certifications.forEach(function(c){h+='<div class="pinf"><strong>'+c+'</strong></div>';});return h+'</div>';}
+  function mkSum(){if(!rj.summary)return'';return'<div class="pm-sec"><div class="pst">Professional Summary</div><div class="psum">'+rj.summary+'</div></div>';}
+  function mkExp(){if(!rj.experience||!rj.experience.length)return'';var h='<div class="pm-sec"><div class="pst">Work Experience</div>';rj.experience.forEach(function(j){h+='<div class="pjob"><div class="pjh"><div class="pjt">'+(j.title||'')+'</div><div class="pjd">'+(j.date||'')+'</div></div><div class="pjc">'+(j.company||'')+(j.location?' &middot; '+j.location:'')+'</div>';if(j.bullets&&j.bullets.length){h+='<ul class="pbul">';j.bullets.forEach(function(b){h+='<li>'+b+'</li>';});h+='</ul>';}h+='</div>';});return h+'</div>';}
+  function mkProj(){if(!rj.projects||!rj.projects.length)return'';var h='<div class="pm-sec"><div class="pst">Projects</div>';rj.projects.forEach(function(p){h+='<div class="pjob"><div class="pjh"><div class="pjt">'+(p.name||'')+'</div><div class="pjd">'+(p.date||'')+'</div></div>';if(p.tech)h+='<div class="pjc">'+p.tech+'</div>';if(p.bullets&&p.bullets.length){h+='<ul class="pbul">';p.bullets.forEach(function(b){h+='<li>'+b+'</li>';});h+='</ul>';}h+='</div>';});return h+'</div>';}
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+(rj.name||'Resume')+'</title>';
+  html+='<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">';
+  html+='<style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Inter,sans-serif;background:white;}.pw{width:210mm;min-height:297mm;background:white;display:flex;flex-direction:column;}.ph{background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 55%,#DB2777 100%);padding:26px 32px 20px;color:white;position:relative;overflow:hidden;}.ph::after{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%;}.pname{font-family:"Plus Jakarta Sans",sans-serif;font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:2px;position:relative;z-index:1;}.ptitle{font-size:11px;font-weight:500;opacity:.88;margin-bottom:8px;position:relative;z-index:1;}.pcontact{display:flex;flex-wrap:wrap;gap:5px 12px;position:relative;z-index:1;}.pcontact span{font-size:9.5px;opacity:.9;display:flex;align-items:center;gap:3px;}.pcontact span::before{content:"";width:3px;height:3px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0;}.pbody{flex:1;display:grid;grid-template-columns:165px 1fr;}.psidebar{background:#F8F9FF;padding:16px 14px;border-right:1px solid #EEF0FF;}.pmain{padding:16px 20px;}.pst{font-family:"Plus Jakarta Sans",sans-serif;font-size:8.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4F46E5;margin-bottom:7px;padding-bottom:4px;border-bottom:1.5px solid #E0E7FF;}.ps{margin-bottom:14px;}.pski{margin-bottom:6px;}.pskin{font-size:9.5px;font-weight:600;color:#374151;margin-bottom:2px;}.pskb{height:3px;background:#E0E7FF;border-radius:2px;}.pskf{height:100%;border-radius:2px;background:linear-gradient(90deg,#4F46E5,#7C3AED);}.ptag{display:inline-block;background:#EEF2FF;color:#4338CA;font-size:8.5px;font-weight:600;padding:1px 5px;border-radius:4px;margin:1px 1px 1px 0;}.pinf{font-size:9.5px;color:#555;margin-bottom:3px;line-height:1.5;}.pedu{margin-bottom:9px;}.pedud{font-size:9.5px;font-weight:700;color:#1a1a2e;}.pedus{font-size:9px;color:#4F46E5;font-weight:600;margin-bottom:1px;}.pedut{font-size:8.5px;color:#6B7280;}.pach{font-size:9.5px;color:#374151;margin-bottom:4px;line-height:1.4;}.pm-sec{margin-bottom:13px;}.psum{font-size:10px;color:#374151;line-height:1.75;background:#F8F9FF;padding:8px 10px;border-radius:6px;border-left:2.5px solid #4F46E5;}.pjob{margin-bottom:11px;padding-bottom:11px;border-bottom:0.5px solid #F3F4F6;}.pjob:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}.pjh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1px;}.pjt{font-family:"Plus Jakarta Sans",sans-serif;font-size:10.5px;font-weight:700;color:#1a1a2e;}.pjd{font-size:8.5px;color:#6B7280;background:#F3F4F6;padding:1px 5px;border-radius:20px;}.pjc{font-size:9px;color:#4F46E5;font-weight:600;margin-bottom:4px;}.pbul{list-style:none;padding:0;}.pbul li{font-size:9.5px;color:#374151;padding:1.5px 0 1.5px 10px;position:relative;line-height:1.6;}.pbul li::before{content:"";position:absolute;left:1px;top:7px;width:4px;height:4px;border-radius:50%;background:#4F46E5;}.pfooter{background:#1a1a2e;padding:7px 24px;display:flex;justify-content:space-between;align-items:center;}.pfooter span{font-size:7.5px;color:rgba(255,255,255,.4);}.pfooter .brand{color:rgba(255,255,255,.7);font-weight:700;font-size:8.5px;}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}@page{margin:0;size:A4;}}</style></head><body>';
+  html+='<div class="pw"><div class="ph"><div class="pname">'+(rj.name||'')+'</div>';
+  if(rj.title)html+='<div class="ptitle">'+rj.title+'</div>';
+  if(rj.contact&&rj.contact.length){html+='<div class="pcontact">';rj.contact.forEach(function(c){html+='<span>'+c+'</span>';});html+='</div>';}
+  html+='</div><div class="pbody"><div class="psidebar">'+mkSkills()+mkTools()+mkLangs()+mkEdu()+mkAch()+mkCert()+'</div><div class="pmain">'+mkSum()+mkExp()+mkProj()+'</div></div><div class="pfooter"><span>Generated by ResumeHopper.ai</span><span class="brand">ResumeHopper</span></div></div>';
+  html+='<script>window.onload=function(){setTimeout(function(){window.print();},800);};</script></body></html>';
+  printWin.document.write(html);
   printWin.document.close();
   btn.innerHTML='<span>⬇</span> Download Beautiful Resume PDF';
   btn.disabled=false;
