@@ -120,7 +120,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <div class="main">
-
   <div class="plans-grid">
     <div class="plan-card featured">
       <div class="plan-badge purple">⭐ BEST VALUE</div>
@@ -211,7 +210,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       </div>
     </div>
   </div>
-
 </div>
 
 <div class="footer">
@@ -220,22 +218,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <p style="margin-top:12px;font-size:11px;">© 2026 ResumeHopper. All rights reserved.</p>
 </div>
 
-<!-- PAYMENT POPUP -->
 <div class="overlay" id="payOverlay">
   <div class="popup">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
       <h2 style="font-size:18px;font-weight:700;color:#1a1a1a;" id="popupTitle">Payment</h2>
       <button onclick="closePayment()" style="background:none;border:none;font-size:24px;cursor:pointer;color:#888;">×</button>
     </div>
-
-    <!-- LIFETIME EMAIL INPUT -->
     <div id="lifetimeEmailRow" style="display:none;margin-bottom:1rem;">
       <label class="field-label">Your Email (this will be your lifetime ID)</label>
       <input class="field-input" type="email" id="lifetimeEmail" placeholder="you@example.com"/>
       <div id="emailErr" style="color:#c00;font-size:12px;margin-top:-8px;margin-bottom:8px;display:none;">Please enter a valid email!</div>
     </div>
-
-    <!-- TOKEN DISPLAY -->
     <div id="tokenRow" style="display:none;margin-bottom:1rem;">
       <div class="pid-box">
         Your unique token:<br>
@@ -243,7 +236,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div style="font-size:11px;color:#888;margin-top:4px;">⚠️ Save this token — you need it to unlock!</div>
       </div>
     </div>
-
     <div class="ptabs">
       <button class="ptab active" onclick="showTab('upi')" id="tab-upi">🇮🇳 UPI</button>
       <button class="ptab" onclick="showTab('btc')" id="tab-btc">₿ BTC</button>
@@ -251,7 +243,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <button class="ptab" onclick="showTab('ltc')" id="tab-ltc">Ł LTC</button>
       <button class="ptab" onclick="showTab('usdt')" id="tab-usdt">₮ USDT</button>
     </div>
-
     <div id="pay-upi" class="pay-panel active">
       <p style="font-size:13px;color:#888;margin-bottom:.5rem;">Scan with GPay, PhonePe, or Paytm</p>
       <div class="qrwrap"><img id="upiQR" src="" alt="UPI QR"/></div>
@@ -261,35 +252,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div id="pay-btc" class="pay-panel">
       <p style="font-size:13px;color:#888;margin-bottom:.5rem;">Send Bitcoin to this address</p>
       <div class="qrwrap"><img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=bc1qm3usekuznu4x5fswn30ju397728z4fjl3mjwzx" alt="BTC QR"/></div>
-      <div style="font-size:13px;font-weight:700;color:#F7931A;margin-bottom:6px;" id="btcLabel">Bitcoin (BTC)</div>
+      <div style="font-size:13px;font-weight:700;color:#F7931A;margin-bottom:6px;">Bitcoin (BTC)</div>
       <div class="addr-box" onclick="copyAddr('bc1qm3usekuznu4x5fswn30ju397728z4fjl3mjwzx','btc-copy')"><span>bc1qm3usekuznu4x5fswn30ju397728z4fjl3mjwzx</span><span class="addr-copy" id="btc-copy">📋 copy</span></div>
     </div>
     <div id="pay-sol" class="pay-panel">
       <p style="font-size:13px;color:#888;margin-bottom:.5rem;">Send Solana to this address</p>
       <div class="qrwrap"><img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=Dg7F34huKhMNusnx7UJDW3SxThNZP61DJiU1cBMFa16Z" alt="SOL QR"/></div>
-      <div style="font-size:13px;font-weight:700;color:#9945FF;margin-bottom:6px;" id="solLabel">Solana (SOL)</div>
+      <div style="font-size:13px;font-weight:700;color:#9945FF;margin-bottom:6px;">Solana (SOL)</div>
       <div class="addr-box" onclick="copyAddr('Dg7F34huKhMNusnx7UJDW3SxThNZP61DJiU1cBMFa16Z','sol-copy')"><span>Dg7F34huKhMNusnx7UJDW3SxThNZP61DJiU1cBMFa16Z</span><span class="addr-copy" id="sol-copy">📋 copy</span></div>
     </div>
     <div id="pay-ltc" class="pay-panel">
       <p style="font-size:13px;color:#888;margin-bottom:.5rem;">Send Litecoin to this address</p>
       <div class="qrwrap"><img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=LZnRPrgiPwMXVRskUZ8ujqmTYhi76wZxnd" alt="LTC QR"/></div>
-      <div style="font-size:13px;font-weight:700;color:#345D9D;margin-bottom:6px;" id="ltcLabel">Litecoin (LTC)</div>
+      <div style="font-size:13px;font-weight:700;color:#345D9D;margin-bottom:6px;">Litecoin (LTC)</div>
       <div class="addr-box" onclick="copyAddr('LZnRPrgiPwMXVRskUZ8ujqmTYhi76wZxnd','ltc-copy')"><span>LZnRPrgiPwMXVRskUZ8ujqmTYhi76wZxnd</span><span class="addr-copy" id="ltc-copy">📋 copy</span></div>
     </div>
     <div id="pay-usdt" class="pay-panel">
       <p style="font-size:13px;color:#888;margin-bottom:.5rem;">Send USDT (ERC-20) to this address</p>
       <div class="qrwrap"><img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=0xf6fE48D55687468d4f66a6d32F09A8Be71b2a7Cf" alt="USDT QR"/></div>
-      <div style="font-size:13px;font-weight:700;color:#26A17B;margin-bottom:6px;" id="usdtLabel">USDT — ERC-20</div>
+      <div style="font-size:13px;font-weight:700;color:#26A17B;margin-bottom:6px;">USDT — ERC-20</div>
       <div class="addr-box" onclick="copyAddr('0xf6fE48D55687468d4f66a6d32F09A8Be71b2a7Cf','usdt-copy')"><span>0xf6fE48D55687468d4f66a6d32F09A8Be71b2a7Cf</span><span class="addr-copy" id="usdt-copy">📋 copy</span></div>
     </div>
-
     <div class="steps-box">
       <div class="srow"><div class="snum2">1</div><span id="step1txt">Enter your email above</span></div>
       <div class="srow"><div class="snum2">2</div>Send payment using any method above</div>
-      <div class="srow"><div class="snum2">3</div>Click Done below — admin will verify your payment</div>
-      <div class="srow"><div class="snum2">4</div><span id="step4txt">Enter your email on the main page to unlock</span></div>
+      <div class="srow"><div class="snum2">3</div>Click Done — admin verifies your payment</div>
+      <div class="srow"><div class="snum2">4</div><span id="step4txt">Enter your email on main page to unlock</span></div>
     </div>
-
     <button class="pbtn" onclick="saveAndClose()">✅ Done — I've paid!</button>
     <button class="clink" onclick="closePayment()">Cancel</button>
   </div>
@@ -396,7 +385,7 @@ function verifyAccess(){
     } else if(d.reason === 'used'){
       showVerifyMsg('❌ This token has already been used!', '#c00');
     } else if(d.reason === 'not_found'){
-      showVerifyMsg('❌ ID not found. Check your email/token.', '#c00');
+      showVerifyMsg('❌ ID not found. Check your email or token.', '#c00');
     } else {
       showVerifyMsg('❌ Payment not verified yet. Please wait for admin approval.', '#c00');
     }
@@ -474,7 +463,7 @@ function renderResults(r){
 }
 
 async function downloadImprovedPDF(){
-  if(!improvedResumeText){ alert('No improved resume available.'); return; }
+  if(!improvedResumeText){ alert('No improved resume available. Please upload and analyze a resume first.'); return; }
   var btn = document.getElementById('dlPdfBtn');
   btn.textContent = '⏳ Generating PDF...';
   btn.disabled = true;
@@ -495,100 +484,84 @@ async function downloadImprovedPDF(){
       if(y < 70){ page = pdfDoc.addPage([595, 842]); y = 800; }
     }
 
-    // HEADER BACKGROUND
+    var lines = improvedResumeText.split('\n').filter(function(l){ return l.trim(); });
+    var name = (lines[0] || 'Your Name').replace(/^#+\s*/, '').toUpperCase();
+    var contact = (lines[1] || '').replace(/^#+\s*/, '');
+
+    // Purple header
     page.drawRectangle({ x: 0, y: 742, width: 595, height: 100, color: rgb(0.42, 0.39, 1) });
 
-    // NAME — extract first line as name
-    var lines = improvedResumeText.split('\n').filter(function(l){ return l.trim(); });
-    var name = lines[0] || 'Your Name';
-    name = name.replace(/^#+\s*/, '').toUpperCase();
-    var nameSize = 22;
-    var nameWidth = boldFont.widthOfTextAtSize(name, nameSize);
-    page.drawText(name, {
-      x: Math.max(margin, (pageW - nameWidth) / 2),
-      y: 800, size: nameSize, font: boldFont, color: rgb(1, 1, 1)
-    });
+    // Name centered
+    var nameSize = 20;
+    var nameW = boldFont.widthOfTextAtSize(name, nameSize);
+    page.drawText(name, { x: Math.max(margin, (pageW - nameW) / 2), y: 800, size: nameSize, font: boldFont, color: rgb(1,1,1) });
 
-    // CONTACT LINE — extract second line
-    var contact = lines[1] || '';
-    contact = contact.replace(/^#+\s*/, '');
-    var contactSize = 10;
-    var contactWidth = font.widthOfTextAtSize(contact, contactSize);
-    page.drawText(contact, {
-      x: Math.max(margin, (pageW - contactWidth) / 2),
-      y: 778, size: contactSize, font: font, color: rgb(0.9, 0.9, 1)
-    });
+    // Contact centered
+    if(contact){
+      var contactSize = 9;
+      var contactW = font.widthOfTextAtSize(contact, contactSize);
+      page.drawText(contact, { x: Math.max(margin, (pageW - contactW) / 2), y: 778, size: contactSize, font: font, color: rgb(0.9, 0.9, 1) });
+    }
 
-    y = 730;
+    y = 728;
 
-    // RENDER REST OF RESUME
-    var skipLines = 2;
-    for(var i = skipLines; i < lines.length; i++){
+    for(var i = 2; i < lines.length; i++){
       var line = lines[i].trim();
-      if(!line){ y -= 6; continue; }
+      if(!line){ y -= 5; continue; }
       checkPage();
 
       var isSection = line.startsWith('##') || line.startsWith('#') ||
-        (line.toUpperCase() === line && line.length > 2 && line.length < 50 && !line.includes('@'));
+        (line.toUpperCase() === line && line.replace(/[^A-Z]/g,'').length > 2 && line.length < 50 && !line.includes('@') && !line.match(/\d{4}/));
 
       if(isSection){
         var secText = line.replace(/^#+\s*/, '').toUpperCase();
-        y -= 8;
+        y -= 6;
         checkPage();
-
-        // Section header background
-        page.drawRectangle({ x: margin, y: y - 4, width: contentW, height: 20, color: rgb(0.95, 0.94, 1) });
-
-        // Purple left border
-        page.drawRectangle({ x: margin, y: y - 4, width: 4, height: 20, color: rgb(0.42, 0.39, 1) });
-
-        page.drawText(secText, { x: margin + 10, y: y + 2, size: 11, font: boldFont, color: rgb(0.42, 0.39, 1) });
+        page.drawRectangle({ x: margin, y: y - 3, width: contentW, height: 18, color: rgb(0.95, 0.94, 1) });
+        page.drawRectangle({ x: margin, y: y - 3, width: 4, height: 18, color: rgb(0.42, 0.39, 1) });
+        page.drawText(secText, { x: margin + 10, y: y + 2, size: 10, font: boldFont, color: rgb(0.42, 0.39, 1) });
         y -= 22;
         continue;
       }
 
-      // Bullet point lines
       var isBullet = line.startsWith('•') || line.startsWith('-') || line.startsWith('*');
       var textToDraw = isBullet ? line.replace(/^[•\-\*]\s*/, '') : line;
-      var xStart = isBullet ? margin + 15 : margin;
-      var fontSize = 10;
+      var xStart = isBullet ? margin + 14 : margin;
+      var fontSize = 9.5;
 
       if(isBullet){
         checkPage();
-        page.drawText('•', { x: margin + 5, y: y, size: 10, font: boldFont, color: rgb(0.42, 0.39, 1) });
+        page.drawText('•', { x: margin + 4, y: y, size: 10, font: boldFont, color: rgb(0.42, 0.39, 1) });
       }
 
-      // Word wrap
       var words = textToDraw.split(' ');
       var curr = '';
-      var isFirstLine = true;
+      var availW = contentW - (isBullet ? 14 : 0);
       for(var w = 0; w < words.length; w++){
         var test = curr ? curr + ' ' + words[w] : words[w];
         var tw = font.widthOfTextAtSize(test, fontSize);
-        var availW = contentW - (isBullet && isFirstLine ? 15 : 0);
         if(tw > availW && curr){
           checkPage();
-          page.drawText(curr, { x: xStart, y: y, size: fontSize, font: font, color: rgb(0.15, 0.15, 0.15) });
-          y -= 14;
+          page.drawText(curr, { x: xStart, y: y, size: fontSize, font: font, color: rgb(0.1, 0.1, 0.1) });
+          y -= 13;
           curr = words[w];
-          xStart = isBullet ? margin + 15 : margin;
-          isFirstLine = false;
+          xStart = isBullet ? margin + 14 : margin;
         } else { curr = test; }
       }
       if(curr){
         checkPage();
-        page.drawText(curr, { x: xStart, y: y, size: fontSize, font: font, color: rgb(0.15, 0.15, 0.15) });
-        y -= 14;
+        page.drawText(curr, { x: xStart, y: y, size: fontSize, font: font, color: rgb(0.1, 0.1, 0.1) });
+        y -= 13;
       }
     }
 
-    // FOOTER on each page
-    var pages = pdfDoc.getPages();
-    pages.forEach(function(pg, idx){
-      pg.drawText('Generated by ResumeHopper.ai  •  Page ' + (idx+1) + ' of ' + pages.length, {
-        x: margin, y: 30, size: 8, font: font, color: rgb(0.6, 0.6, 0.6)
+    // Footer on all pages
+    var allPages = pdfDoc.getPages();
+    allPages.forEach(function(pg, idx){
+      pg.drawLine({ start: {x: margin, y: 42}, end: {x: 595 - margin, y: 42}, thickness: 0.5, color: rgb(0.8, 0.8, 0.8) });
+      pg.drawText('Generated by ResumeHopper.ai  •  Page ' + (idx + 1) + ' of ' + allPages.length, {
+        x: margin, y: 28, size: 8, font: font, color: rgb(0.6, 0.6, 0.6)
       });
-      pg.drawLine({ start: {x: margin, y: 42}, end: {x: 595-margin, y: 42}, thickness: 0.5, color: rgb(0.8, 0.8, 0.8) });
     });
 
     var pdfBytes = await pdfDoc.save();
@@ -600,7 +573,6 @@ async function downloadImprovedPDF(){
   } catch(e){ alert('PDF error: ' + e.message); }
   btn.textContent = '⬇ Download AI-Improved Resume (PDF)';
   btn.disabled = false;
-}
 }
 
 function showErr(msg){
