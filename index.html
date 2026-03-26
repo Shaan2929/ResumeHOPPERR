@@ -474,7 +474,7 @@ function renderResults(r){
 }
 
 async function downloadImprovedPDF(){
-  if(!improvedResumeText){ alert('No improved resume available. Please upload and analyze a resume first.'); return; }
+  if(!improvedResumeText){ alert('No improved resume available.'); return; }
   var btn = document.getElementById('dlPdfBtn');
   btn.textContent = '⏳ Generating PDF...';
   btn.disabled = true;
@@ -488,36 +488,109 @@ async function downloadImprovedPDF(){
     var page = pdfDoc.addPage([595, 842]);
     var margin = 50;
     var y = 800;
-    var lineH = 16;
-    var maxW = 595 - (margin * 2);
-    page.drawText('AI-IMPROVED RESUME', { x: margin, y: y, size: 18, font: boldFont, color: rgb(0.42, 0.39, 1) });
-    y -= 10;
-    page.drawLine({ start: {x: margin, y: y}, end: {x: 595 - margin, y: y}, thickness: 2, color: rgb(0.42, 0.39, 1) });
-    y -= 20;
-    var lines = improvedResumeText.split('\n');
-    for(var i = 0; i < lines.length; i++){
+    var pageW = 595;
+    var contentW = pageW - (margin * 2);
+
+    function checkPage(){
+      if(y < 70){ page = pdfDoc.addPage([595, 842]); y = 800; }
+    }
+
+    // HEADER BACKGROUND
+    page.drawRectangle({ x: 0, y: 742, width: 595, height: 100, color: rgb(0.42, 0.39, 1) });
+
+    // NAME — extract first line as name
+    var lines = improvedResumeText.split('\n').filter(function(l){ return l.trim(); });
+    var name = lines[0] || 'Your Name';
+    name = name.replace(/^#+\s*/, '').toUpperCase();
+    var nameSize = 22;
+    var nameWidth = boldFont.widthOfTextAtSize(name, nameSize);
+    page.drawText(name, {
+      x: Math.max(margin, (pageW - nameWidth) / 2),
+      y: 800, size: nameSize, font: boldFont, color: rgb(1, 1, 1)
+    });
+
+    // CONTACT LINE — extract second line
+    var contact = lines[1] || '';
+    contact = contact.replace(/^#+\s*/, '');
+    var contactSize = 10;
+    var contactWidth = font.widthOfTextAtSize(contact, contactSize);
+    page.drawText(contact, {
+      x: Math.max(margin, (pageW - contactWidth) / 2),
+      y: 778, size: contactSize, font: font, color: rgb(0.9, 0.9, 1)
+    });
+
+    y = 730;
+
+    // RENDER REST OF RESUME
+    var skipLines = 2;
+    for(var i = skipLines; i < lines.length; i++){
       var line = lines[i].trim();
-      if(!line){ y -= 8; continue; }
-      if(y < 60){ page = pdfDoc.addPage([595, 842]); y = 800; }
-      var isBold = line.startsWith('##') || (line.toUpperCase() === line && line.length > 2 && line.length < 40);
-      var text = line.replace(/^#+\s*/, '');
-      var words = text.split(' ');
+      if(!line){ y -= 6; continue; }
+      checkPage();
+
+      var isSection = line.startsWith('##') || line.startsWith('#') ||
+        (line.toUpperCase() === line && line.length > 2 && line.length < 50 && !line.includes('@'));
+
+      if(isSection){
+        var secText = line.replace(/^#+\s*/, '').toUpperCase();
+        y -= 8;
+        checkPage();
+
+        // Section header background
+        page.drawRectangle({ x: margin, y: y - 4, width: contentW, height: 20, color: rgb(0.95, 0.94, 1) });
+
+        // Purple left border
+        page.drawRectangle({ x: margin, y: y - 4, width: 4, height: 20, color: rgb(0.42, 0.39, 1) });
+
+        page.drawText(secText, { x: margin + 10, y: y + 2, size: 11, font: boldFont, color: rgb(0.42, 0.39, 1) });
+        y -= 22;
+        continue;
+      }
+
+      // Bullet point lines
+      var isBullet = line.startsWith('•') || line.startsWith('-') || line.startsWith('*');
+      var textToDraw = isBullet ? line.replace(/^[•\-\*]\s*/, '') : line;
+      var xStart = isBullet ? margin + 15 : margin;
+      var fontSize = 10;
+
+      if(isBullet){
+        checkPage();
+        page.drawText('•', { x: margin + 5, y: y, size: 10, font: boldFont, color: rgb(0.42, 0.39, 1) });
+      }
+
+      // Word wrap
+      var words = textToDraw.split(' ');
       var curr = '';
+      var isFirstLine = true;
       for(var w = 0; w < words.length; w++){
         var test = curr ? curr + ' ' + words[w] : words[w];
-        var tw = (isBold ? boldFont : font).widthOfTextAtSize(test, 11);
-        if(tw > maxW && curr){
-          if(y < 60){ page = pdfDoc.addPage([595, 842]); y = 800; }
-          page.drawText(curr, { x: margin, y: y, size: 11, font: isBold ? boldFont : font, color: rgb(0.1, 0.1, 0.1) });
-          y -= lineH; curr = words[w];
+        var tw = font.widthOfTextAtSize(test, fontSize);
+        var availW = contentW - (isBullet && isFirstLine ? 15 : 0);
+        if(tw > availW && curr){
+          checkPage();
+          page.drawText(curr, { x: xStart, y: y, size: fontSize, font: font, color: rgb(0.15, 0.15, 0.15) });
+          y -= 14;
+          curr = words[w];
+          xStart = isBullet ? margin + 15 : margin;
+          isFirstLine = false;
         } else { curr = test; }
       }
       if(curr){
-        if(y < 60){ page = pdfDoc.addPage([595, 842]); y = 800; }
-        page.drawText(curr, { x: margin, y: y, size: isBold ? 12 : 11, font: isBold ? boldFont : font, color: rgb(0.1, 0.1, 0.1) });
-        y -= isBold ? lineH + 4 : lineH;
+        checkPage();
+        page.drawText(curr, { x: xStart, y: y, size: fontSize, font: font, color: rgb(0.15, 0.15, 0.15) });
+        y -= 14;
       }
     }
+
+    // FOOTER on each page
+    var pages = pdfDoc.getPages();
+    pages.forEach(function(pg, idx){
+      pg.drawText('Generated by ResumeHopper.ai  •  Page ' + (idx+1) + ' of ' + pages.length, {
+        x: margin, y: 30, size: 8, font: font, color: rgb(0.6, 0.6, 0.6)
+      });
+      pg.drawLine({ start: {x: margin, y: 42}, end: {x: 595-margin, y: 42}, thickness: 0.5, color: rgb(0.8, 0.8, 0.8) });
+    });
+
     var pdfBytes = await pdfDoc.save();
     var blob = new Blob([pdfBytes], { type: 'application/pdf' });
     var a = document.createElement('a');
@@ -527,6 +600,7 @@ async function downloadImprovedPDF(){
   } catch(e){ alert('PDF error: ' + e.message); }
   btn.textContent = '⬇ Download AI-Improved Resume (PDF)';
   btn.disabled = false;
+}
 }
 
 function showErr(msg){
